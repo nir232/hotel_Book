@@ -1,0 +1,393 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f5f6f3;
+    color: #1b2520;
+}
+
+button, input, select, textarea {
+    font: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 245px;
+    height: 100vh;
+    background: #17221d;
+    color: white;
+    padding: 28px 15px;
+    transition: .25s;
+    z-index: 10;
+}
+
+.sidebar.collapsed {
+    width: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow: hidden;
+}
+
+.side-brand {
+    margin: 0 15px 35px;
+    color: white;
+}
+
+.side-link {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #d7ded8;
+    text-align: left;
+    padding: 13px 15px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.side-link:hover, .side-link.active {
+    background: #789b74;
+    color: white;
+}
+
+.side-link.logout {
+    position: absolute;
+    left: 15px;
+    bottom: 25px;
+    width: calc(100% - 30px);
+}
+
+.main {
+    margin-left: 245px;
+    min-height: 100vh;
+    transition: .25s;
+}
+
+.topbar {
+    height: 75px;
+    background: white;
+    border-bottom: 1px solid #e4e7e2;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 30px;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+}
+
+.menu-btn {
+    border: 0;
+    background: #eef2ec;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.welcome {
+    color: #78817b;
+    margin-right: 6px;
+    font-size: 13px;
+}
+
+.top-user {
+    margin-left: auto;
+    background: #eef2ec;
+    padding: 9px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.section {
+    display: none;
+    padding: 35px;
+}
+
+.section.active {
+    display: block;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.section-heading p:last-child {
+    color: #737c76;
+}
+
+.page-alert {
+    margin: 20px 35px 0;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    border: 1px solid #e3e6e1;
+    border-radius: 13px;
+    padding: 24px;
+}
+
+.stat-card span {
+    display: block;
+    color: #778079;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.stat-card strong {
+    font-size: 32px;
+}
+
+.dashboard-card, .profile-card, .table-card {
+    background: white;
+    border: 1px solid #e3e6e1;
+    border-radius: 13px;
+    padding: 25px;
+    margin-bottom: 22px;
+}
+
+.dashboard-card h2 {
+    margin-bottom: 10px;
+}
+
+.dashboard-card p {
+    color: #6d766f;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 18px;
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 12px 0 7px;
+}
+
+input, select, textarea {
+    width: 100%;
+    border: 1px solid #d8ddd7;
+    border-radius: 7px;
+    padding: 11px 12px;
+    outline: none;
+    background: white;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: #789b74;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 800px;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: center;
+    padding: 15px;
+    background: #f0f3ee;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #edf0eb;
+    font-size: 13px;
+    vertical-align: top;
+    text-align: center;
+}
+
+.empty {
+    text-align: center;
+    padding: 35px;
+    color: #818982;
+}
+
+.status {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.status.pending {
+    background: #fff3d7;
+    color: #8a6415;
+}
+
+.status.confirmed {
+    background: #e3f2e3;
+    color: #387139;
+}
+
+.status.cancelled {
+    background: #eee;
+    color: #666;
+}
+
+.status.available {
+    background: #e3f2e3;
+    color: #387139;
+}
+
+.status.maintenance {
+    background: #fde8e7;
+    color: #963e38;
+}
+
+.success-btn, .danger-btn {
+    border: 0;
+    padding: 8px 11px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.success-btn {
+    background: #6f9769;
+}
+
+.danger-btn {
+    background: #c45b55;
+}
+
+.action-row {
+    display: flex;
+    gap: 6px;
+}
+
+.inline {
+    display: inline;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    max-width: 700px;
+}
+
+.avatar {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    background: #789b74;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.profile-info p {
+    margin-top: 9px;
+    color: #657069;
+}
+
+.edit-link {
+    color: #5d8258;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
+
+.edit-form {
+    min-width: 230px;
+    display: grid;
+    gap: 7px;
+    margin: 10px 0;
+}
+
+.delete-room {
+    margin-top: 8px;
+}
+
+small {
+    color: #7a817c;
+}
+
+@media (max-width: 1000px) {
+    .stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 750px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main {
+        margin-left: 220px;
+    }
+
+    .section {
+        padding: 22px 15px;
+    }
+
+    .stats, .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .full-width {
+        grid-column: auto;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/* =========================
+   BOOKING COST BOXES
+========================= */
+
+.primary-btn{
+    padding:12px 10px;
+    border:1px solid grey;
+    border-radius: 10px;
+    background:rgb(52, 49, 49);
+    color:white;
+}
